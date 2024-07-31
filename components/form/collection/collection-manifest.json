@@ -1,6 +1,7 @@
 {
   "entries": [
-    "components/form/form.js"
+    "components/form/form.js",
+    "components/select-option/select-option.js"
   ],
   "compiler": {
     "name": "@stencil/core",

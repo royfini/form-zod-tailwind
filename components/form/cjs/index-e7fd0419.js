@@ -1,5 +1,27 @@
+'use strict';
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () {
+            return e[k];
+          }
+        });
+      }
+    });
+  }
+  n['default'] = e;
+  return Object.freeze(n);
+}
+
 const NAMESPACE = 'tailwind-zod';
-const BUILD = /* tailwind-zod */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, asyncQueue: false, attachStyles: true, cloneNodeFix: false, cmpDidLoad: true, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, devTools: false, disconnectedCallback: false, element: false, event: false, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, hydratedSelectorName: "hydrated", initializeNextTick: false, invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: false, profile: false, prop: false, propBoolean: false, propMutable: false, propNumber: false, propString: false, reflect: false, scoped: false, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: true, style: false, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: true, vdomListener: true, vdomPropOrAttr: true, vdomRef: true, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
+const BUILD = /* tailwind-zod */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, asyncQueue: false, attachStyles: true, cloneNodeFix: false, cmpDidLoad: true, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, devTools: false, disconnectedCallback: false, element: false, event: false, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, hydratedSelectorName: "hydrated", initializeNextTick: false, invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: false, profile: false, prop: false, propBoolean: false, propMutable: false, propNumber: false, propString: false, reflect: false, scoped: false, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: true, style: false, svg: true, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: true, vdomListener: true, vdomPropOrAttr: true, vdomRef: true, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
 
 /*
  Stencil Client Platform v4.19.2 | MIT Licensed | https://stenciljs.com
@@ -42,13 +64,13 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     return module[exportName];
   }
   /*!__STENCIL_STATIC_IMPORT_SWITCH__*/
-  return import(
+  return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
     /* @vite-ignore */
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
     `./${bundleId}.entry.js${""}`
-  ).then((importedModule) => {
+  )); }).then((importedModule) => {
     {
       cmpModules.set(bundleId, importedModule);
     }
@@ -107,6 +129,8 @@ var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
 
 // src/utils/constants.ts
 var EMPTY_OBJ = {};
+var SVG_NS = "http://www.w3.org/2000/svg";
+var HTML_NS = "http://www.w3.org/1999/xhtml";
 
 // src/utils/helpers.ts
 var isDef = (v) => v != null;
@@ -367,9 +391,16 @@ var createElm = (oldParentVNode, newParentVNode, childIndex, parentElm) => {
   if (newVNode2.$text$ !== null) {
     elm = newVNode2.$elm$ = doc.createTextNode(newVNode2.$text$);
   } else {
-    elm = newVNode2.$elm$ = doc.createElement(
+    if (!isSvgMode) {
+      isSvgMode = newVNode2.$tag$ === "svg";
+    }
+    elm = newVNode2.$elm$ = doc.createElementNS(
+      isSvgMode ? SVG_NS : HTML_NS,
       !useNativeShadowDom && BUILD.slotRelocation && newVNode2.$flags$ & 2 /* isSlotFallback */ ? "slot-fb" : newVNode2.$tag$
-    );
+    ) ;
+    if (isSvgMode && newVNode2.$tag$ === "foreignObject") {
+      isSvgMode = false;
+    }
     {
       updateElement(null, newVNode2, isSvgMode);
     }
@@ -382,6 +413,13 @@ var createElm = (oldParentVNode, newParentVNode, childIndex, parentElm) => {
         if (childNode) {
           elm.appendChild(childNode);
         }
+      }
+    }
+    {
+      if (newVNode2.$tag$ === "svg") {
+        isSvgMode = false;
+      } else if (elm.tagName === "foreignObject") {
+        isSvgMode = true;
       }
     }
   }
@@ -513,8 +551,12 @@ var patch = (oldVNode, newVNode2, isInitialRender = false) => {
   const elm = newVNode2.$elm$ = oldVNode.$elm$;
   const oldChildren = oldVNode.$children$;
   const newChildren = newVNode2.$children$;
+  const tag = newVNode2.$tag$;
   const text = newVNode2.$text$;
   if (text === null) {
+    {
+      isSvgMode = tag === "svg" ? true : tag === "foreignObject" ? false : isSvgMode;
+    }
     {
       {
         updateElement(oldVNode, newVNode2, isSvgMode);
@@ -529,6 +571,9 @@ var patch = (oldVNode, newVNode2, isInitialRender = false) => {
       addVnodes(elm, null, newVNode2, newChildren, 0, newChildren.length - 1);
     } else if (oldChildren !== null) {
       removeVnodes(oldChildren, 0, oldChildren.length - 1);
+    }
+    if (isSvgMode && tag === "svg") {
+      isSvgMode = false;
     }
   } else if (oldVNode.$text$ !== text) {
     elm.data = text;
@@ -964,6 +1009,11 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
 // src/runtime/nonce.ts
 var setNonce = (nonce) => plt.$nonce$ = nonce;
 
-export { bootstrapLazy as b, getElement as g, h, promiseResolve as p, registerInstance as r, setNonce as s };
+exports.bootstrapLazy = bootstrapLazy;
+exports.getElement = getElement;
+exports.h = h;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.setNonce = setNonce;
 
-//# sourceMappingURL=index-809e3d02.js.map
+//# sourceMappingURL=index-e7fd0419.js.map

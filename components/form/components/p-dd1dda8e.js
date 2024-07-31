@@ -1,27 +1,5 @@
-'use strict';
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () {
-            return e[k];
-          }
-        });
-      }
-    });
-  }
-  n['default'] = e;
-  return Object.freeze(n);
-}
-
 const NAMESPACE = 'tailwind-zod';
-const BUILD = /* tailwind-zod */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, asyncQueue: false, attachStyles: true, cloneNodeFix: false, cmpDidLoad: true, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, devTools: false, disconnectedCallback: false, element: false, event: false, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, hydratedSelectorName: "hydrated", initializeNextTick: false, invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: false, profile: false, prop: false, propBoolean: false, propMutable: false, propNumber: false, propString: false, reflect: false, scoped: false, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: true, style: false, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: true, vdomListener: true, vdomPropOrAttr: true, vdomRef: true, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
+const BUILD = /* tailwind-zod */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, asyncQueue: false, attachStyles: true, cloneNodeFix: false, cmpDidLoad: true, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, devTools: false, disconnectedCallback: false, element: false, event: false, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, hydratedSelectorName: "hydrated", invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: false, lifecycle: true, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: false, profile: false, prop: false, propBoolean: false, propMutable: false, propNumber: false, propString: false, reflect: false, scoped: false, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: true, style: false, svg: true, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: true, vdomListener: true, vdomPropOrAttr: true, vdomRef: true, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
 
 /*
  Stencil Client Platform v4.19.2 | MIT Licensed | https://stenciljs.com
@@ -33,7 +11,6 @@ var __export = (target, all) => {
 };
 var hostRefs = /* @__PURE__ */ new WeakMap();
 var getHostRef = (ref) => hostRefs.get(ref);
-var registerInstance = (lazyInstance, hostRef) => hostRefs.set(hostRef.$lazyInstance$ = lazyInstance, hostRef);
 var registerHost = (hostElement, cmpMeta) => {
   const hostRef = {
     $flags$: 0,
@@ -50,37 +27,10 @@ var registerHost = (hostElement, cmpMeta) => {
 };
 var isMemberInElement = (elm, memberName) => memberName in elm;
 var consoleError = (e, el) => (0, console.error)(e, el);
-
-// src/client/client-load-module.ts
-var cmpModules = /* @__PURE__ */ new Map();
-var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
-  const exportName = cmpMeta.$tagName$.replace(/-/g, "_");
-  const bundleId = cmpMeta.$lazyBundleId$;
-  if (!bundleId) {
-    return void 0;
-  }
-  const module = cmpModules.get(bundleId) ;
-  if (module) {
-    return module[exportName];
-  }
-  /*!__STENCIL_STATIC_IMPORT_SWITCH__*/
-  return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-    /* @vite-ignore */
-    /* webpackInclude: /\.entry\.js$/ */
-    /* webpackExclude: /\.system\.entry\.js$/ */
-    /* webpackMode: "lazy" */
-    `./${bundleId}.entry.js${""}`
-  )); }).then((importedModule) => {
-    {
-      cmpModules.set(bundleId, importedModule);
-    }
-    return importedModule[exportName];
-  }, consoleError);
-};
-var HYDRATED_CSS = "{visibility:hidden}.hydrated{visibility:inherit}";
-var SLOT_FB_CSS = "slot-fb{display:contents}slot-fb[hidden]{display:none}";
 var win = typeof window !== "undefined" ? window : {};
 var doc = win.document || { head: {} };
+var H = win.HTMLElement || class {
+};
 var plt = {
   $flags$: 0,
   $resourcesUrl$: "",
@@ -127,8 +77,17 @@ var flush = () => {
 var nextTick = (cb) => promiseResolve().then(cb);
 var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
 
+// src/runtime/asset-path.ts
+var getAssetPath = (path) => {
+  const assetUrl = new URL(path, plt.$resourcesUrl$);
+  return assetUrl.origin !== win.location.origin ? assetUrl.href : assetUrl.pathname;
+};
+var setAssetPath = (path) => plt.$resourcesUrl$ = path;
+
 // src/utils/constants.ts
 var EMPTY_OBJ = {};
+var SVG_NS = "http://www.w3.org/2000/svg";
+var HTML_NS = "http://www.w3.org/1999/xhtml";
 
 // src/utils/helpers.ts
 var isDef = (v) => v != null;
@@ -136,12 +95,6 @@ var isComplexType = (o) => {
   o = typeof o;
   return o === "object" || o === "function";
 };
-
-// src/utils/query-nonce-meta-tag-content.ts
-function queryNonceMetaTagContent(doc2) {
-  var _a, _b, _c;
-  return (_c = (_b = (_a = doc2.head) == null ? void 0 : _a.querySelector('meta[name="csp-nonce"]')) == null ? void 0 : _b.getAttribute("content")) != null ? _c : void 0;
-}
 
 // src/utils/result.ts
 var result_exports = {};
@@ -192,13 +145,6 @@ var unwrapErr = (result) => {
   }
 };
 var createTime = (fnName, tagName = "") => {
-  {
-    return () => {
-      return;
-    };
-  }
-};
-var uniqueTime = (key, measureText) => {
   {
     return () => {
       return;
@@ -275,7 +221,6 @@ var parsePropertyValue = (propValue, propType) => {
   }
   return propValue;
 };
-var getElement = (ref) => getHostRef(ref).$hostElement$ ;
 var emitEvent = (elm, name, opts) => {
   const ev = plt.ce(name, opts);
   elm.dispatchEvent(ev);
@@ -295,7 +240,7 @@ var setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags) => {
       if (newValue) {
         newValue(elm);
       }
-    } else if ((!isProp ) && memberName[0] === "o" && memberName[1] === "n") {
+    } else if ((!elm.__lookupSetter__(memberName)) && memberName[0] === "o" && memberName[1] === "n") {
       if (memberName[2] === "-") {
         memberName = memberName.slice(3);
       } else if (isMemberInElement(win, ln)) {
@@ -389,9 +334,16 @@ var createElm = (oldParentVNode, newParentVNode, childIndex, parentElm) => {
   if (newVNode2.$text$ !== null) {
     elm = newVNode2.$elm$ = doc.createTextNode(newVNode2.$text$);
   } else {
-    elm = newVNode2.$elm$ = doc.createElement(
+    if (!isSvgMode) {
+      isSvgMode = newVNode2.$tag$ === "svg";
+    }
+    elm = newVNode2.$elm$ = doc.createElementNS(
+      isSvgMode ? SVG_NS : HTML_NS,
       !useNativeShadowDom && BUILD.slotRelocation && newVNode2.$flags$ & 2 /* isSlotFallback */ ? "slot-fb" : newVNode2.$tag$
-    );
+    ) ;
+    if (isSvgMode && newVNode2.$tag$ === "foreignObject") {
+      isSvgMode = false;
+    }
     {
       updateElement(null, newVNode2, isSvgMode);
     }
@@ -404,6 +356,13 @@ var createElm = (oldParentVNode, newParentVNode, childIndex, parentElm) => {
         if (childNode) {
           elm.appendChild(childNode);
         }
+      }
+    }
+    {
+      if (newVNode2.$tag$ === "svg") {
+        isSvgMode = false;
+      } else if (elm.tagName === "foreignObject") {
+        isSvgMode = true;
       }
     }
   }
@@ -535,8 +494,12 @@ var patch = (oldVNode, newVNode2, isInitialRender = false) => {
   const elm = newVNode2.$elm$ = oldVNode.$elm$;
   const oldChildren = oldVNode.$children$;
   const newChildren = newVNode2.$children$;
+  const tag = newVNode2.$tag$;
   const text = newVNode2.$text$;
   if (text === null) {
+    {
+      isSvgMode = tag === "svg" ? true : tag === "foreignObject" ? false : isSvgMode;
+    }
     {
       {
         updateElement(oldVNode, newVNode2, isSvgMode);
@@ -551,6 +514,9 @@ var patch = (oldVNode, newVNode2, isInitialRender = false) => {
       addVnodes(elm, null, newVNode2, newChildren, 0, newChildren.length - 1);
     } else if (oldChildren !== null) {
       removeVnodes(oldChildren, 0, oldChildren.length - 1);
+    }
+    if (isSvgMode && tag === "svg") {
+      isSvgMode = false;
     }
   } else if (oldVNode.$text$ !== text) {
     elm.data = text;
@@ -611,7 +577,7 @@ var scheduleUpdate = (hostRef, isInitialLoad) => {
 var dispatchHooks = (hostRef, isInitialLoad) => {
   const elm = hostRef.$hostElement$;
   const endSchedule = createTime("scheduleUpdate", hostRef.$cmpMeta$.$tagName$);
-  const instance = hostRef.$lazyInstance$ ;
+  const instance = elm;
   if (!instance) {
     throw new Error(
       `Can't render component <${elm.tagName.toLowerCase()} /> with invalid Stencil runtime! Make sure this imported component is compiled with a \`externalRuntime: true\` flag. For more information, please refer to https://stenciljs.com/docs/custom-elements#externalruntime`
@@ -678,7 +644,7 @@ var postUpdateComponent = (hostRef) => {
   const tagName = hostRef.$cmpMeta$.$tagName$;
   const elm = hostRef.$hostElement$;
   const endPostUpdate = createTime("postUpdate", tagName);
-  const instance = hostRef.$lazyInstance$ ;
+  const instance = elm;
   const ancestorComponent = hostRef.$ancestorComponent$;
   if (!(hostRef.$flags$ & 64 /* hasLoadedComponent */)) {
     hostRef.$flags$ |= 64 /* hasLoadedComponent */;
@@ -734,20 +700,14 @@ var addHydratedFlag = (elm) => {
 var getValue = (ref, propName) => getHostRef(ref).$instanceValues$.get(propName);
 var setValue = (ref, propName, newVal, cmpMeta) => {
   const hostRef = getHostRef(ref);
-  if (!hostRef) {
-    throw new Error(
-      `Couldn't find host element for "${cmpMeta.$tagName$}" as it is unknown to this Stencil runtime. This usually happens when integrating a 3rd party Stencil component with another Stencil component or application. Please reach out to the maintainers of the 3rd party Stencil component or report this on the Stencil Discord server (https://chat.stenciljs.com) or comment on this similar [GitHub issue](https://github.com/ionic-team/stencil/issues/5457).`
-    );
-  }
   const oldVal = hostRef.$instanceValues$.get(propName);
   const flags = hostRef.$flags$;
-  const instance = hostRef.$lazyInstance$ ;
   newVal = parsePropertyValue(newVal);
   const areBothNaN = Number.isNaN(oldVal) && Number.isNaN(newVal);
   const didValueChange = newVal !== oldVal && !areBothNaN;
-  if ((!(flags & 8 /* isConstructingInstance */) || oldVal === void 0) && didValueChange) {
+  if (didValueChange) {
     hostRef.$instanceValues$.set(propName, newVal);
-    if (instance) {
+    {
       if ((flags & (2 /* hasRendered */ | 16 /* isQueuedForUpdate */)) === 2 /* hasRendered */) {
         scheduleUpdate(hostRef, false);
       }
@@ -762,13 +722,13 @@ var proxyComponent = (Cstr, cmpMeta, flags) => {
   if (cmpMeta.$members$ || BUILD.watchCallback ) {
     const members = Object.entries((_a = cmpMeta.$members$) != null ? _a : {});
     members.map(([memberName, [memberFlags]]) => {
-      if ((memberFlags & 31 /* Prop */ || (flags & 2 /* proxyState */) && memberFlags & 32 /* State */)) {
+      if ((memberFlags & 31 /* Prop */ || memberFlags & 32 /* State */)) {
         Object.defineProperty(prototype, memberName, {
           get() {
             return getValue(this, memberName);
           },
           set(newValue) {
-            setValue(this, memberName, newValue, cmpMeta);
+            setValue(this, memberName, newValue);
           },
           configurable: true,
           enumerable: true
@@ -781,41 +741,9 @@ var proxyComponent = (Cstr, cmpMeta, flags) => {
 
 // src/runtime/initialize-component.ts
 var initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId) => {
-  let Cstr;
   if ((hostRef.$flags$ & 32 /* hasInitializedComponent */) === 0) {
     hostRef.$flags$ |= 32 /* hasInitializedComponent */;
-    const bundleId = cmpMeta.$lazyBundleId$;
-    if (bundleId) {
-      const CstrImport = loadModule(cmpMeta);
-      if (CstrImport && "then" in CstrImport) {
-        const endLoad = uniqueTime();
-        Cstr = await CstrImport;
-        endLoad();
-      } else {
-        Cstr = CstrImport;
-      }
-      if (!Cstr) {
-        throw new Error(`Constructor for "${cmpMeta.$tagName$}#${hostRef.$modeName$}" was not found`);
-      }
-      if (!Cstr.isProxied) {
-        proxyComponent(Cstr, cmpMeta, 2 /* proxyState */);
-        Cstr.isProxied = true;
-      }
-      const endNewInstance = createTime("createInstance", cmpMeta.$tagName$);
-      {
-        hostRef.$flags$ |= 8 /* isConstructingInstance */;
-      }
-      try {
-        new Cstr(hostRef);
-      } catch (e) {
-        consoleError(e);
-      }
-      {
-        hostRef.$flags$ &= ~8 /* isConstructingInstance */;
-      }
-      endNewInstance();
-    } else {
-      Cstr = elm.constructor;
+    {
       const cmpTag = elm.localName;
       customElements.whenDefined(cmpTag).then(() => hostRef.$flags$ |= 128 /* isWatchReady */);
     }
@@ -849,7 +777,7 @@ var connectedCallback = (elm) => {
         }
       }
       {
-        initializeComponent(elm, hostRef, cmpMeta);
+        initializeComponent(elm, hostRef);
       }
     } else {
       if (hostRef == null ? void 0 : hostRef.$lazyInstance$) ; else if (hostRef == null ? void 0 : hostRef.$onReadyPromise$) {
@@ -859,138 +787,56 @@ var connectedCallback = (elm) => {
     endConnected();
   }
 };
-var disconnectInstance = (instance) => {
-};
 var disconnectedCallback = async (elm) => {
   if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0) {
-    const hostRef = getHostRef(elm);
-    if (hostRef == null ? void 0 : hostRef.$lazyInstance$) ; else if (hostRef == null ? void 0 : hostRef.$onReadyPromise$) {
-      hostRef.$onReadyPromise$.then(() => disconnectInstance());
-    }
+    getHostRef(elm);
   }
 };
-
-// src/runtime/bootstrap-lazy.ts
-var bootstrapLazy = (lazyBundles, options = {}) => {
-  var _a;
-  const endBootstrap = createTime();
-  const cmpTags = [];
-  const exclude = options.exclude || [];
-  const customElements2 = win.customElements;
-  const head = doc.head;
-  const metaCharset = /* @__PURE__ */ head.querySelector("meta[charset]");
-  const dataStyles = /* @__PURE__ */ doc.createElement("style");
-  const deferredConnectedCallbacks = [];
-  let appLoadFallback;
-  let isBootstrapping = true;
-  Object.assign(plt, options);
-  plt.$resourcesUrl$ = new URL(options.resourcesUrl || "./", doc.baseURI).href;
-  let hasSlotRelocation = false;
-  lazyBundles.map((lazyBundle) => {
-    lazyBundle[1].map((compactMeta) => {
-      const cmpMeta = {
-        $flags$: compactMeta[0],
-        $tagName$: compactMeta[1],
-        $members$: compactMeta[2],
-        $listeners$: compactMeta[3]
-      };
-      if (cmpMeta.$flags$ & 4 /* hasSlotRelocation */) {
-        hasSlotRelocation = true;
-      }
+var proxyCustomElement = (Cstr, compactMeta) => {
+  const cmpMeta = {
+    $flags$: compactMeta[0],
+    $tagName$: compactMeta[1]
+  };
+  {
+    cmpMeta.$members$ = compactMeta[2];
+  }
+  Object.assign(Cstr.prototype, {
+    __registerHost() {
+      registerHost(this, cmpMeta);
+    },
+    connectedCallback() {
+      getHostRef(this);
+      connectedCallback(this);
+    },
+    disconnectedCallback() {
+      disconnectedCallback(this);
+    },
+    __attachShadow() {
       {
-        cmpMeta.$members$ = compactMeta[2];
+        if (!this.shadowRoot) {
+          {
+            this.attachShadow({ mode: "open" });
+          }
+        } else {
+          if (this.shadowRoot.mode !== "open") {
+            throw new Error(
+              `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${this.shadowRoot.mode} but Stencil only supports open shadow roots.`
+            );
+          }
+        }
       }
-      const tagName = cmpMeta.$tagName$;
-      const HostElement = class extends HTMLElement {
-        // StencilLazyHost
-        constructor(self) {
-          super(self);
-          this.hasRegisteredEventListeners = false;
-          self = this;
-          registerHost(self, cmpMeta);
-          if (cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
-            {
-              if (!self.shadowRoot) {
-                {
-                  self.attachShadow({ mode: "open" });
-                }
-              } else {
-                if (self.shadowRoot.mode !== "open") {
-                  throw new Error(
-                    `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${self.shadowRoot.mode} but Stencil only supports open shadow roots.`
-                  );
-                }
-              }
-            }
-          }
-        }
-        connectedCallback() {
-          getHostRef(this);
-          if (!this.hasRegisteredEventListeners) {
-            this.hasRegisteredEventListeners = true;
-          }
-          if (appLoadFallback) {
-            clearTimeout(appLoadFallback);
-            appLoadFallback = null;
-          }
-          if (isBootstrapping) {
-            deferredConnectedCallbacks.push(this);
-          } else {
-            plt.jmp(() => connectedCallback(this));
-          }
-        }
-        disconnectedCallback() {
-          plt.jmp(() => disconnectedCallback(this));
-        }
-        componentOnReady() {
-          return getHostRef(this).$onReadyPromise$;
-        }
-      };
-      cmpMeta.$lazyBundleId$ = lazyBundle[0];
-      if (!exclude.includes(tagName) && !customElements2.get(tagName)) {
-        cmpTags.push(tagName);
-        customElements2.define(
-          tagName,
-          proxyComponent(HostElement, cmpMeta, 1 /* isElementConstructor */)
-        );
-      }
-    });
+    }
   });
-  if (cmpTags.length > 0) {
-    if (hasSlotRelocation) {
-      dataStyles.textContent += SLOT_FB_CSS;
-    }
-    {
-      dataStyles.textContent += cmpTags.sort() + HYDRATED_CSS;
-    }
-    if (dataStyles.innerHTML.length) {
-      dataStyles.setAttribute("data-styles", "");
-      const nonce = (_a = plt.$nonce$) != null ? _a : queryNonceMetaTagContent(doc);
-      if (nonce != null) {
-        dataStyles.setAttribute("nonce", nonce);
-      }
-      head.insertBefore(dataStyles, metaCharset ? metaCharset.nextSibling : head.firstChild);
-    }
-  }
-  isBootstrapping = false;
-  if (deferredConnectedCallbacks.length) {
-    deferredConnectedCallbacks.map((host) => host.connectedCallback());
-  } else {
-    {
-      plt.jmp(() => appLoadFallback = setTimeout(appDidLoad, 30));
-    }
-  }
-  endBootstrap();
+  Cstr.is = cmpMeta.$tagName$;
+  return proxyComponent(Cstr, cmpMeta);
 };
 
 // src/runtime/nonce.ts
 var setNonce = (nonce) => plt.$nonce$ = nonce;
 
-exports.bootstrapLazy = bootstrapLazy;
-exports.getElement = getElement;
-exports.h = h;
-exports.promiseResolve = promiseResolve;
-exports.registerInstance = registerInstance;
-exports.setNonce = setNonce;
+// src/runtime/platform-options.ts
+var setPlatformOptions = (opts) => Object.assign(plt, opts);
 
-//# sourceMappingURL=index-0f75a115.js.map
+export { H, setNonce as a, setPlatformOptions as b, getAssetPath as g, h, proxyCustomElement as p, setAssetPath as s };
+
+//# sourceMappingURL=p-dd1dda8e.js.map
